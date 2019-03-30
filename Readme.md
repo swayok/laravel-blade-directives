@@ -53,7 +53,7 @@ Add `\LaravelBladeDirectives\LaravelBladeDirectivesServiceProvider::class` to yo
 ## Partials
 
 The idea behind partials is possibility to use sub-template several times in a single blade template 
-wihtout using a `@view()` directives that require a view file to be created. Sometimes you do not 
+without using a `@view()` directive that require a view file to be created. Sometimes you do not 
 need separate view file for simple template like table row. 
 Partials also useful to make big template a bit cleaner. 
 
@@ -174,7 +174,7 @@ Examples:
 #### Directives that support PHP code:
 
 - `jsEcho`/`jsecho`
-- `jsechoencoded`/`jsechoencoded`
+- `jsEchoEncoded`/`jsechoencoded`
 - `jsEval`/`jseval`
 - `jsIf`/`jsif`
 - `jsElseIf`/`jselseif`
