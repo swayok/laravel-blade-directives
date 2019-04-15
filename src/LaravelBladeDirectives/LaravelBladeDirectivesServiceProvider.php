@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class LaravelBladeDirectivesServiceProvider extends ServiceProvider {
 
-    public function register() {
+    public function boot() {
         $this->registerDotJsBladeDirectives();
         $this->registerUsefulBladeDirectives();
     }
