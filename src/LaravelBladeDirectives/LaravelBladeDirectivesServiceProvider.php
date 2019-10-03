@@ -237,7 +237,7 @@ PARTIAL;
 
     protected function processDotJsExpressionWithPhpCodeInside($dotJsExpression): string {
         $expression = str_replace("'", "\\'", $dotJsExpression);
-        // replace {{ $phpExpression }} by "' . ($phpExpression) . '"
+        // replace "` . $phpExpression . `" by "' . ($phpExpression) . '"
         return preg_replace_callback("%`\s*\.\s*(.+?)\s*\.\s*`%", function ($matches) {
             $insert = str_replace("\\'", "'", $matches[1]);
             return "'. ($insert) . '";
