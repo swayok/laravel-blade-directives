@@ -143,6 +143,19 @@ some php code inside directive.
     @jsendforeach
     // {{~}}
     
+    @jsPartial(partial_name_without_spaces)
+    @jspartial(partial_name_without_spaces)
+    // {{##def.partial_name_without_spaces:
+    
+    @jsEndPartial
+    @jsendpartial
+    // #}}
+    
+    @jsEchoPartial(partial_name_without_spaces)
+    @jsechopartial(partial_name_without_spaces)
+    // {{#def.partial_name_without_spaces}}
+    
+    
 ### Complex inserts with PHP code
 PHP code inside dot.js directive must begin with `` `. `` and end with `` .` `` 
 (the quote is the one that placed on tilda `~` button on keyboard and is called `backtick`).
@@ -184,7 +197,9 @@ Examples:
 - `jsIfSimple`/`jsifsimple`
 - `jsElseIfSimple`/`jselseifsimple`
 - `jsForEach`/`jsforeach`
-- Other directives that does not allow parameters (like `jsEndIf`)
+- `jsPartial`/`jspartial`
+- `jsEchoPartial`/`jsechopartial`
+- Other directives that does not allow parameters (like `jsEndIf`, `jsEndForEach`)
 
 ## PHP Storm Configuration (Blade directives)
 Open `Settings > Languages & Frameworks > PHP > Blade`. Untick `Use default settings`.
@@ -222,17 +237,17 @@ record for each directive name.
     Names: breakpoint, endPartial, endpartial
     Has parameter: false
     
-    Names: jsEcho, jsEchoEncoded, jsEval, jsForEach, jsIf, jsElseIf, jsIfSimple, jsElseIfSimple
+    Names: jsEcho, jsEchoEncoded, jsEval, jsForEach, jsIf, jsElseIf, jsIfSimple, jsElseIfSimple, jsPartial, jsEchoPartial 
     Has parameter: true
     Prefix: <?php echo `
     Suffix: `; ?>
     
-    Names: jsecho, jsechoencoded, jseval, jsforeach, jsif, jselseif, jsifsimple, jselseifsimple
+    Names: jsecho, jsechoencoded, jseval, jsforeach, jsif, jselseif, jsifsimple, jselseifsimple, jspartial, jsechopartial
     Has parameter: true
     Prefix: <?php echo `
     Suffix: `; ?>
     
-    Names: jsElse, jsEndIf, jsEndForEach, jselse, jsendif, jsendforeach
+    Names: jsElse, jsEndIf, jsEndForEach, jselse, jsendif, jsendforeach, jsEndPartial, jsendpartial
     Has parameter: false
 
 ## PHP Storm Configuration (colors for directives)

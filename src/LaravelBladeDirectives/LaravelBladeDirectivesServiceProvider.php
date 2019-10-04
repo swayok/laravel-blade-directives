@@ -109,12 +109,12 @@ PARTIAL;
      *
      * Settings -> Languages & Frameworks -> PHP -> Blade -> Directives
      *
-     * For directives: jsEcho, jsEchoEncoded, jsEval, jsForEach, jsIf, jsElseIf, jsIfSimple, jsElseIfSimple
+     * For directives: jsEcho, jsEchoEncoded, jsEval, jsForEach, jsIf, jsElseIf, jsIfSimple, jsElseIfSimple, jsPartial, jsEchoPartial
      * Has parameter: true
      * Prefix: <?php echo `
      * Suffix: `; ?>
      *
-     * For directives without parameters: jsElse, jsEndIf, jsEndForEach
+     * For directives without parameters: jsElse, jsEndIf, jsEndForEach, jsEndPartial
      * Has parameter: false
      *
      * Additional:
@@ -233,6 +233,28 @@ PARTIAL;
         };
         \Blade::directive('jsEndForEach', $closure);
         \Blade::directive('jsendforeach', $closure);
+
+        // {{##def.name:
+        $closure = function ($expression) {
+            return "{{ '{{##def.{$expression}:' }}";
+        };
+        \Blade::directive('jsPartial', $closure);
+        \Blade::directive('jspartial', $closure);
+
+        // #}}
+        $closure = function () {
+            return "<?php echo '#}}' ?>";
+        };
+        \Blade::directive('jsEndPartial', $closure);
+        \Blade::directive('jsendpartial', $closure);
+
+        // {{#def.name}}
+        $closure = function ($expression) {
+            $expression = $this->processDotJsExpressionWithPhpCodeInside($expression);
+            return "<?php echo '@{{#def.{$expression}}}' ?>";
+        };
+        \Blade::directive('jsEchoPartial', $closure);
+        \Blade::directive('jsechopartial', $closure);
     }
 
     protected function processDotJsExpressionWithPhpCodeInside($dotJsExpression): string {
